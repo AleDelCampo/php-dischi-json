@@ -10,8 +10,8 @@
     cursor: pointer;
 }
 
-.card-img.top {
-    padding: 8px;
+.card img {
+    padding: 12px;
 }
 
 nav img {

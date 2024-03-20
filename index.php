@@ -20,13 +20,13 @@
 
     <body>
         <div id="app">
-            <div class="container-fluid w-75">
+            <div class="container-fluid p-4 w-75">
                 <div class="gap-4 row justify-content-center">
                  
-                    <div class="card" v-for="(disk, index) in diskList" @click="showCard(index, 'original')">
-                        <img :src="disk.poster" class="card-img-top" alt="Album">
+                    <div class="card p-2" v-for="(disk, index) in diskList" @click="showCard(index, 'original')">
+                        <img :src="disk.poster" alt="Album">
                         <div class="card-body">
-                            <h4 class="card-title">{{ disk.title }}</h4>
+                            <h4>{{ disk.title }}</h4>
                             <p>Author: {{ disk.author }}</p>
                             <p>Year: {{ disk.year }}</p>
                             <p>Genre: {{ disk.genre }}</p>
@@ -36,9 +36,9 @@
                     <h2>Ciò che ascolto mentre programmo!!</h2>
                 </div>
                     <div class="card" v-for="(myDisk, index) in myDiskList" @click="showCard(index, 'additional')">
-                        <img :src="myDisk.image[3]['#text']" class="card-img-top" alt="Album">
+                        <img :src="myDisk.image[3]['#text']" alt="Album">
                         <div class="card-body">
-                            <h4 class="card-title">{{ myDisk.name }}</h4>
+                            <h4>{{ myDisk.name }}</h4>
                             <p>Artist: {{ myDisk.artist.name }}</p>
                         </div>
                     </div>
@@ -48,9 +48,9 @@
             <div class="overlay" v-if="showOverlay">
                 <div class="close-button" @click="closeOverlay"><i class="fa-solid fa-bomb"></i></div>
                 <div class="card modal-card">
-                    <img :src="selectedDisk.poster" class="card-img-top" alt="Album">
+                    <img :src="selectedDisk.poster" alt="Album">
                     <div class="card-body">
-                        <h4 class="card-title">{{ selectedDisk.title }}</h4>
+                        <h4>{{ selectedDisk.title }}</h4>
                         <p>Author: {{ selectedDisk.author }}</p>
                         <p>Year: {{ selectedDisk.year }}</p>
                         <p>Genre: {{ selectedDisk.genre }}</p>
