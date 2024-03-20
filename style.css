@@ -6,11 +6,62 @@
 
 .card {
     width: calc(100% / 4);
-    max-height: 400px;
+    background-color: forestgreen;
+    cursor: pointer;
+}
+
+.card-img.top {
+    padding: 8px;
 }
 
 nav img {
     width: 200px;
     height: 68px;
     border-radius: 24px;
+}
+
+nav {
+    background-color: turquoise;
+}
+
+body {
+    background-color: aquamarine;
+}
+
+h4 {
+    font-weight: bold;
+}
+
+/*Mantengo apposta il testo sulla sinistra e non centrato.*/
+p {
+    margin: 0;
+    font-weight: bold;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.close-button {
+    color: chartreuse;
+    position: absolute;
+    cursor: pointer;
+    font-size: 2em;
+    top: 40px;
+    right: 40px;
+}
+
+@media screen and (max-width: 940px) {
+    .card {
+        width: calc(100% / 1);
+    }
 }

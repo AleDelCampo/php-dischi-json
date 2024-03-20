@@ -11,7 +11,7 @@
 
 <body>
 
-    <nav class="navbar bg-body-tertiary">
+    <nav class="navbar">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="img/Boolify-20-3-2024.png" alt="Boolify">
