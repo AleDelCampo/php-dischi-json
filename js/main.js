@@ -30,7 +30,7 @@ createApp({
                     params: {
                         method: 'artist.getTopAlbums',
                         artist,
-                        api_key: '499797c00bbea1a764ec4d41d531d2eb',
+                        api_key: '499797c00bbea1a764ec4d41d531d2eb',    
                         format: 'json'
                     }
                 });
@@ -50,7 +50,7 @@ createApp({
     },
 
     mounted() {
-        axios.get('./dischi.json')
+        axios.get('./server.php')
             .then(res => {
                 this.diskList = res.data;
                 this.myDisks();
