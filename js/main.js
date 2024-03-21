@@ -11,18 +11,29 @@ createApp({
     },
 
     methods: {
-        showCard(index, type) {
-            this.showOverlay = true;
-            this.selectedDisk = (type === 'original') ? this.diskList[index] : { poster: this.myDiskList[index].image[3]['#text'] };
+        albumClick(index) {
+            axios.get('./server.php?discIndex=' + index)
+                .then(res => {
+                    this.selectedDisk = res.data;
+                    this.showOverlay = true;
+                });
         },
-    
+
+        albumClickMyDisk(index) {
+            const selectedMyDisks = this.myDiskList[index];
+            this.selectedDisk = {
+                title: selectedMyDisks.name,
+                author: selectedMyDisks.artist.name,
+                poster: selectedMyDisks.image[3]['#text']
+            };
+            this.showOverlay = true;
+        },
+
         closeOverlay() {
             this.showOverlay = false;
-            this.selectedDisk = null;
         },
-    
-        myDisks() {
 
+        myDisks() {
             const artists = ['Slipknot', 'Fleetwood Mac', 'Tool', 'Metallica'];
 
             const requests = artists.map(artist => {
@@ -30,12 +41,12 @@ createApp({
                     params: {
                         method: 'artist.getTopAlbums',
                         artist,
-                        api_key: '499797c00bbea1a764ec4d41d531d2eb',    
+                        api_key: '499797c00bbea1a764ec4d41d531d2eb',
                         format: 'json'
                     }
                 });
             });
-    
+
             axios.all(requests)
                 .then(responses => {
                     responses.forEach(response => {
@@ -45,7 +56,7 @@ createApp({
                         }));
                         this.myDiskList.push(...albums);
                     });
-                })
+                });
         }
     },
 
@@ -54,6 +65,6 @@ createApp({
             .then(res => {
                 this.diskList = res.data;
                 this.myDisks();
-            })
+            });
     },
 }).mount('#app');

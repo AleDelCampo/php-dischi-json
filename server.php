@@ -1,11 +1,25 @@
 <?php
 
-$json_file = 'dischi.json';
+$discsString = file_get_contents('./dischi.json');
 
-$json_data = file_get_contents($json_file);
+$disc_list = json_decode($discsString);
 
-$data = json_decode($json_data, true);
+if (isset ($_GET['discIndex']) && $_GET['discIndex'] != '') {
 
-header('Content-Type: application/json');
+    $disc_index = $_GET['discIndex'];
 
-echo json_encode($data);
+    $selected_album = $disc_list[$disc_index];
+
+    $album_json = json_encode($selected_album);
+
+    header('Content-Type: application/json');
+    echo $album_json;
+
+} else {
+
+    $discs_string = json_encode($disc_list);
+
+    header('Content-Type: application/json');
+    echo $discs_string;
+
+}
